@@ -10,5 +10,5 @@ const account = new Account(client)
 const user = await account.create(
     ID.unique(),
     'hamdan123@gmail.com',
-    'password12'
+    'password1'
 )
