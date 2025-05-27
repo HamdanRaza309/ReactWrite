@@ -83,6 +83,21 @@ export class DbService {
         }
     }
 
+    async getPosts() {
+        try {
+            return await this.databases.getDocument(
+                config.appWriteDatabaseId,
+                config.appWriteCollectionId,
+                [
+                    Query.equal('status', 'active')
+                ]
+            );
+        } catch (error) {
+            console.error('Failed to fetch posts:', error.message);
+            throw new Error("Could not fetch the posts. It may not exist.");
+        }
+    }
+
     async listPosts() {
         try {
             return await this.databases.listDocuments(
@@ -94,7 +109,50 @@ export class DbService {
             throw new Error("Could not retrieve posts. Please try again later.");
         }
     }
+
+    // File services
+    async uploadFile(file) {
+        try {
+            await this.storage.createFile(
+                config.appWriteBucketId,
+                ID.unique(),
+                file
+            );
+            return true;
+        } catch (error) {
+            console.error('Failed to upload file:', error.message);
+            throw new Error("Could not upload file. Please try again later.");
+        }
+    }
+
+    async deleteFile(fileId) {
+        try {
+            await this.storage.deleteFile(
+                config.appWriteBucketId,
+                fileId
+            );
+            return true;
+        } catch (error) {
+            console.error('Failed to delete file:', error.message);
+            throw new Error("Could not delete file. Please try again later.");
+        }
+    }
+
+    async getFilePreview(fileId) {
+        try {
+            return this.storage.getFilePreview(
+                config.appWriteBucketId,
+                fileId
+            );
+        } catch (error) {
+            console.error('Failed to get file preview:', error.message);
+            throw new Error("Could not get file preview. Please try again later.");
+        }
+    }
+
 }
+
+
 
 const dbService = new DbService();
 export default dbService;
