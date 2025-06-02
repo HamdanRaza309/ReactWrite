@@ -7,49 +7,52 @@ function Footer() {
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
                 {/* Logo & Tagline */}
                 <div>
-                    <h1 className="text-2xl font-bold text-white mb-3">BlogSphere</h1>
-                    <p className="text-sm">
+                    <h1 className="text-2xl font-bold text-white mb-3 tracking-wide">BlogSphere</h1>
+                    <p className="text-sm leading-relaxed">
                         Where ideas meet expression. Share your thoughts, explore others.
                     </p>
                 </div>
 
-                {/* About Section */}
+                {/* About */}
                 <div>
-                    <h2 className="text-white font-semibold text-lg mb-4">About</h2>
+                    <h2 className="text-white font-semibold text-lg mb-4 border-b border-[#ffd670] w-fit">About</h2>
                     <ul className="space-y-2 text-sm">
-                        <li><a href="#" className="hover:text-white">Our Mission</a></li>
-                        <li><a href="#" className="hover:text-white">Team</a></li>
-                        <li><a href="#" className="hover:text-white">Careers</a></li>
+                        {['Our Mission', 'Team', 'Careers'].map((item, i) => (
+                            <li key={i}>
+                                <a href="#" className="hover:text-[#ffd670] transition">{item}</a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
                 {/* Categories */}
                 <div>
-                    <h2 className="text-white font-semibold text-lg mb-4">Categories</h2>
+                    <h2 className="text-white font-semibold text-lg mb-4 border-b border-[#ffd670] w-fit">Categories</h2>
                     <ul className="space-y-2 text-sm">
-                        <li><a href="#" className="hover:text-white">Tech</a></li>
-                        <li><a href="#" className="hover:text-white">Lifestyle</a></li>
-                        <li><a href="#" className="hover:text-white">Travel</a></li>
-                        <li><a href="#" className="hover:text-white">Food</a></li>
+                        {['Tech', 'Lifestyle', 'Travel', 'Food'].map((cat, i) => (
+                            <li key={i}>
+                                <a href="#" className="hover:text-[#ffd670] transition">{cat}</a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
-                {/* Contact & Social */}
+                {/* Connect & Social */}
                 <div>
-                    <h2 className="text-white font-semibold text-lg mb-4">Connect</h2>
-                    <p className="text-sm mb-3">contact@blogsphere.com</p>
-                    <div className="flex space-x-4">
-                        <a href="#"><FaFacebookF className="hover:text-white transition" /></a>
-                        <a href="#"><FaTwitter className="hover:text-white transition" /></a>
-                        <a href="#"><FaInstagram className="hover:text-white transition" /></a>
-                        <a href="#"><FaGithub className="hover:text-white transition" /></a>
+                    <h2 className="text-white font-semibold text-lg mb-4 border-b border-[#ffd670] w-fit">Connect</h2>
+                    <p className="text-sm mb-3">📧 contact@blogsphere.com</p>
+                    <div className="flex space-x-4 text-xl">
+                        <a href="#" className="hover:text-[#ffd670] transition"><FaFacebookF /></a>
+                        <a href="#" className="hover:text-[#ffd670] transition"><FaTwitter /></a>
+                        <a href="#" className="hover:text-[#ffd670] transition"><FaInstagram /></a>
+                        <a href="#" className="hover:text-[#ffd670] transition"><FaGithub /></a>
                     </div>
                 </div>
             </div>
 
             {/* Footer Bottom */}
             <div className="text-center text-xs text-gray-500 mt-10 border-t border-gray-700 pt-4">
-                © {new Date().getFullYear()} BlogSphere. All rights reserved.
+                © {new Date().getFullYear()} <span className="text-white font-semibold">BlogSphere</span>. All rights reserved.
             </div>
         </footer>
     );
